@@ -19,6 +19,7 @@ See logical volumes
 lsblk -f
 
 see if the kernel detected
+dmesg --follow
 dmesg | grep -i sd
 dmesg | tail -n 50
 
@@ -33,4 +34,9 @@ sudo umount /mnt/mydrive
 
 View mounted filesystems
 df -ha
+
+Confirm drive is visible at USB level
+lsusb
+
+[ -d /sys/firmware/efi ] && echo "UEFI boot" || echo "Legacy BIOS boot"
 
