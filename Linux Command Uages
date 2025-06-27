@@ -1,6 +1,5 @@
 !!!LVM needs activation
-sudo vgscan
-sudo vgchange -ay
+sudo vgscan && sudo vgchange -ay
 
 How to Add a Directory to $PATH
 Temporarily (for current shell session only)
