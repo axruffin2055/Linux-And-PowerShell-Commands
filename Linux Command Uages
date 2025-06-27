@@ -1,5 +1,34 @@
 !!!LVM needs activation
-sudo vgscan && sudo vgchange -ay
+sudo vgscan && sudo vgchange -ay    (activation)
+sudo vgs && sudo lvs     (See group and logical volume)
+lsblk -f    (Check FS type)
+
+how do I LVM filesystem's partition type.
+Confirm the logical volume device path
+sudo lvdisplay   (Look for path: /dev/vg_external/lv_tmp)
+
+Unmount the filesystem (if mounted): Check if it’s mounted:
+mount | grep lv_tmp
+
+If it is, unmount it:
+sudo umount /dev/vg_external/lv_tmp
+
+Remove the existing filesystem
+sudo wipefs -a /dev/vg_external/lv_tmp   (Wipe FS type only not size)
+
+Create the new filesystem
+sudo mkfs.xfs /dev/vg_external/lv_tmp
+
+lvresize:to resize an existing LV | lvremove:to delete an LV.| lvcreate to make a new one.
+sudo lvresize -L 4G /dev/vg_external/lv_tmp
+
+mount it back:
+sudo mount /dev/vg_external/lv_tmp
+
+Correct Way to Set Up Swap on LVM
+sudo mkswap /dev/vg_external/lv_swap
+sudo swapon /dev/vg_external/lv_swap      (Initialize it)
+
 
 How to Add a Directory to $PATH
 Temporarily (for current shell session only)
