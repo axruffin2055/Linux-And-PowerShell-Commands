@@ -1,0 +1,36 @@
+!!!LVM needs activation
+sudo vgscan
+sudo vgchange -ay
+
+How to Add a Directory to $PATH
+Temporarily (for current shell session only)
+export PATH=$PATH:/new/directory/path
+Example: export PATH=$PATH:/home/axruffin/scripts
+
+Permanently (survives reboot / new terminal sessions)
+nano ~/.bashrc
+export PATH=$PATH:/home/axruffin/scripts
+source ~/.bashrc
+
+Find the device
+sudo fdisk -l
+
+See logical volumes
+lsblk -f
+
+see if the kernel detected
+dmesg | grep -i sd
+dmesg | tail -n 50
+
+Create a mount point
+sudo mkdir /mnt/mydrive
+
+Mount the filesystem
+sudo mount -t ext4 /dev/sdb1 /mnt/mydrive
+
+Unmount when done
+sudo umount /mnt/mydrive
+
+View mounted filesystems
+df -ha
+
