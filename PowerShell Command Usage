@@ -1,0 +1,28 @@
+If you want to mount the physical disk directly
+
+List all disks
+Get-Disk
+
+Unmount it from Windows
+Get-Disk 2 | Set-Disk -IsOffline $true
+
+The Windows device path for a physical disk is always: \\.\PhysicalDrive1 or 2 or 3...
+Also: --partition 1: Specifies which partition on the disk you want to mount. For example, 
+if your disk has 1 exFAT partition, this targets it specifically
+Mount it into WSL:
+wsl --mount \\.\PhysicalDrive2 --partition 1 --type exfat
+
+Check it:
+ls /mnt/wsl
+
+You can then browse it:
+ls /mnt/wsl/PHYSICALDRIVE2p1
+
+Unmount it when done:
+wsl --unmount \\.\PhysicalDrive2
+
+mount back to Windows
+Get-Disk 2 | Set-Disk -IsOffline $false
+
+Get-Partition -DiskNumber 1
+Get-Volume
