@@ -1,0 +1,87 @@
+https://www.commandinline.com/powershell/top-100-powershell-commands-guide-with-examples/
+
+📚 Help Commands (Start Here)
+Command	                          Description	                      Example
+
+Get-Help <Command>	              Show help about a command	        Get-Help Get-Process
+Get-Help <Command> -Examples	    Show example uses	Get-Help        Get-Service -Examples
+Get-Command <pattern>  	          List available cmdlets/functions	Get-Command *Service*
+Get-Help <Command> -Online	      Open online help page	            Get-Help Get-Process -Online
+
+📂 Filesystem Commands
+Command	                    Description	                          Example
+
+Get-ChildItem (gci)	        List files/folders (like ls)	        Get-ChildItem C:\Windows
+Set-Location (cd)	          Change current directory	            Set-Location C:\Users
+Get-Location (pwd)	        Show current directory	              Get-Location
+New-Item	                  Create file or folder	                New-Item -Path C:\Test -ItemType Directory
+Remove-Item	                Delete file/folder	                  Remove-Item C:\Test\file.txt
+Copy-Item	                  Copy file/folder	                    Copy-Item C:\file.txt D:\backup\
+Move-Item	                  Move or rename	                      Move-Item C:\file.txt D:\newfile.txt
+Rename-Item	                Rename file or folder	                Rename-Item C:\oldname.txt newname.txt
+
+🔍 Searching & Filtering Commands
+Command	          Description	                          Example
+
+Select-String	    Search text in files (like grep)	    Select-String -Path *.log -Pattern "error"
+Where-Object	    Filter objects by property	         `Get-Process
+Get-Command	      Find available cmdlets/functions	    Get-Command *process*
+
+🖥️ Hardware Information Commands
+Command	                        Description	                      Example
+
+Get-ComputerInfo	              Show system summary	              Get-ComputerInfo
+Get-CimInstance -ClassName      CPU details	                      Get-CimInstance -ClassName 
+Win32_Processor                                                   Win32_Processor
+Get-PhysicalDisk	              Physical disk details	            Get-PhysicalDisk
+Get-NetAdapter	                Network adapter info	            Get-NetAdapter
+
+📑 Disk Management Commands
+Command	            Description	                      Example
+
+Get-Volume	        List volumes	                    Get-Volume
+Get-Disk	          List physical disks	              Get-Disk
+Initialize-Disk	    Initialize a new disk	            Initialize-Disk -Number 2
+New-Partition	      Create a partition	              New-Partition -DiskNumber 2 -UseMaximumSize -AssignDriveLetter
+Format-Volume	      Format partition	                Format-Volume -DriveLetter E -FileSystem NTFS
+
+📡 Networking Commands
+Command	            Description	            Example
+
+Test-Connection	    Ping test	              Test-Connection google.com
+Get-NetIPAddress	  Show IP addresses	      Get-NetIPAddress
+Get-NetRoute	      Show routing table	    Get-NetRoute
+Resolve-DnsName	    DNS lookup	            Resolve-DnsName microsoft.com
+
+⚙️ Process & Service Management Commands
+Command	            Description	                    Example
+
+Get-Process	        List running processes	        Get-Process
+Stop-Process	      Stop a process by name or ID	  Stop-Process -Name notepad
+Start-Process	      Launch a program	              Start-Process notepad
+Get-Service	        List services	                  Get-Service
+Start-Service	      Start a service	                Start-Service Spooler
+Stop-Service	      Stop a service	                Stop-Service Spooler
+
+👤 User & System Info Commands
+Command	            Description	              Example
+
+Get-LocalUser	      List local users	        Get-LocalUser
+Get-LocalGroup	    List local groups	        Get-LocalGroup
+Get-EventLog	      View system logs	        Get-EventLog -LogName System -Newest 5
+
+🖨️ Printing Commands
+Command	            Description	                    Example
+
+Get-Printer	        List installed printers	        Get-Printer
+Get-PrintJob	      View current print jobs	        Get-PrintJob
+Remove-PrintJob	    Cancel a print job	            Remove-PrintJob -PrinterName 'HP' -ID 3
+
+📜 Scripting Utilities
+Command	            Description	                Example
+
+Write-Output	      Display text	              Write-Output 'Hello World'
+Write-Host	        Print text to console	      Write-Host 'Hello'
+Read-Host	          Prompt user input	          $name = Read-Host 'Enter your name'
+Start-Sleep	        Pause script	              Start-Sleep -Seconds 5
+ForEach-Object	    Loop through items	        `Get-Process
