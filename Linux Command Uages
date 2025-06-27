@@ -13,6 +13,10 @@ mount | grep lv_tmp
 If it is, unmount it:
 sudo umount /dev/vg_external/lv_tmp
 
+!!!Correct Way to Set Up Swap on LVM
+sudo mkswap /dev/vg_external/lv_swap
+sudo swapon /dev/vg_external/lv_swap      (Initialize it)
+
 Remove the existing filesystem
 sudo wipefs -a /dev/vg_external/lv_tmp   (Wipe FS type only not size)
 
@@ -24,11 +28,6 @@ sudo lvresize -L 4G /dev/vg_external/lv_tmp
 
 mount it back:
 sudo mount /dev/vg_external/lv_tmp
-
-Correct Way to Set Up Swap on LVM
-sudo mkswap /dev/vg_external/lv_swap
-sudo swapon /dev/vg_external/lv_swap      (Initialize it)
-
 
 How to Add a Directory to $PATH
 Temporarily (for current shell session only)
