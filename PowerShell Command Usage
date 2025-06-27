@@ -26,3 +26,8 @@ Get-Disk 2 | Set-Disk -IsOffline $false
 
 Get-Partition -DiskNumber 1
 Get-Volume
+
+Look at the provider details
+Get-WmiObject -Namespace "root\Intel_ME" -List
+OR
+Get-CimInstance -Namespace "root\Intel_ME" -ClassName *
