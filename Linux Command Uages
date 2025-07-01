@@ -3,6 +3,12 @@ sudo vgscan && sudo vgchange -ay    (activation)
 sudo vgs && sudo lvs     (See group and logical volume)
 lsblk -f    (Check FS type)
 
+!!!How to deal with USB with file.iso type on partition
+Make sure disk is unmount (May have to change config using Disks GUI)
+format the disk fat32   (Use GUI or term)
+Wipe existing partition table clean:
+sudo wipefs -a /dev/sdx 
+
 how do I LVM filesystem's partition type.
 Confirm the logical volume device path
 sudo lvdisplay   (Look for path: /dev/vg_external/lv_tmp)
