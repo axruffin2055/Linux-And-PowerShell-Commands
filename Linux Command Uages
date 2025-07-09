@@ -6,8 +6,25 @@ lsblk -f    (Check FS type)
 !!!How to deal with USB with file.iso type on partition
 Make sure disk is unmount (May have to change config using Disks GUI)
 format the disk fat32   (Use GUI or term)
+wipefs -a: Removes all known filesystems and partition table signatures.
+dd if=/dev/zero: Overwrites the beginning of the drive (100MB is usually enough to kill any boot records or persistent config).
 Wipe existing partition table clean:
-sudo wipefs -a /dev/sdx 
+sudo wipefs -a /dev/sdX
+sudo dd if=/dev/zero of=/dev/sdX bs=1M status=progress count=100
+
+OR
+mount the partition then
+cd /run/media/aruffin/Ventoy   (the path where *.iso exist)
+rm -rf ./*
+
+This replaces the existing partition table with a blank GPT table — fast and safe.
+Wipe Only Partition Table
+sudo parted /dev/sdX mklabel gpt
+
+If you want to reuse the USB stick:  
+sudo parted /dev/sdX mklabel gpt
+sudo parted -a opt /dev/sdX mkpart primary fat32 1MiB 100%
+sudo mkfs.vfat -F32 /dev/sdX1
 
 how do I LVM filesystem's partition type.
 Confirm the logical volume device path
@@ -44,6 +61,9 @@ Permanently (survives reboot / new terminal sessions)
 nano ~/.bashrc
 export PATH=$PATH:/home/axruffin/scripts
 source ~/.bashrc
+
+Get info on partition such as sector(Start,end), size, name, flags
+sudo parted /dev/nvme0n1 print
 
 Find the device
 sudo fdisk -l
