@@ -91,5 +91,14 @@ df -ha
 Confirm drive is visible at USB level
 lsusb
 
-[ -d /sys/firmware/efi ] && echo "UEFI boot" || echo "Legacy BIOS boot"
+[ -d /sys/firmware/efi ] && echo "UEFI boot" || echo "Legacy BIOS boot"]
+
+
+Change hostname: hostnamectl : /etc/hostname  : /etc/host (For DNS IP forwarding)
+
+
+/etc/default/grub: After changing this file, run: grub2-mkconfig -o /boot/grub2/grub.cfg :  to update /boot/*.cfg
+
+/var/log/zypp/history
+zypper refresh  (to fix packages installed)
 
